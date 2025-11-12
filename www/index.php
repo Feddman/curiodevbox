@@ -31,10 +31,39 @@
         </header>
 
         <!-- System Info Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <?php
+        // Haal MySQL versie op
+        $mysqlVersion = 'N/A';
+        $hosts = [
+            ['host' => 'mysql', 'port' => 3306],
+            ['host' => 'localhost', 'port' => 3309]
+        ];
+        
+        foreach ($hosts as $config) {
+            try {
+                $pdo = new PDO(
+                    "mysql:host={$config['host']};port={$config['port']};dbname=curiodevbox",
+                    'curiodevbox',
+                    'curiodevbox',
+                    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 3]
+                );
+                $stmt = $pdo->query("SELECT VERSION() as version");
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                $mysqlVersion = $result['version'] ?? 'N/A';
+                break;
+            } catch (PDOException $e) {
+                continue;
+            }
+        }
+        ?>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
                 <h3 class="text-sm font-semibold text-slate-500 uppercase mb-2">PHP Versie</h3>
                 <p class="text-3xl font-bold text-slate-900"><?php echo phpversion(); ?></p>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
+                <h3 class="text-sm font-semibold text-slate-500 uppercase mb-2">MySQL Versie</h3>
+                <p class="text-3xl font-bold text-slate-900"><?php echo htmlspecialchars($mysqlVersion); ?></p>
             </div>
             <div class="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
                 <h3 class="text-sm font-semibold text-slate-500 uppercase mb-2">Server</h3>
@@ -182,13 +211,32 @@
             <div class="space-y-4">
                 <?php
                 // Test MySQL verbinding
-                try {
-                    $pdo = new PDO(
-                        'mysql:host=mysql;dbname=curiodevbox',
-                        'curiodevbox',
-                        'curiodevbox',
-                        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-                    );
+                $mysqlConnected = false;
+                $mysqlError = '';
+                
+                // Probeer eerst mysql (Docker), dan localhost
+                $hosts = [
+                    ['host' => 'mysql', 'port' => 3306],
+                    ['host' => 'localhost', 'port' => 3309]
+                ];
+                
+                foreach ($hosts as $config) {
+                    try {
+                        $pdo = new PDO(
+                            "mysql:host={$config['host']};port={$config['port']};dbname=curiodevbox",
+                            'curiodevbox',
+                            'curiodevbox',
+                            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 3]
+                        );
+                        $mysqlConnected = true;
+                        break;
+                    } catch (PDOException $e) {
+                        $mysqlError = $e->getMessage();
+                        continue;
+                    }
+                }
+                
+                if ($mysqlConnected) {
                     echo '<div class="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">';
                     echo '<div class="w-3 h-3 bg-green-500 rounded-full"></div>';
                     echo '<div>';
@@ -196,12 +244,13 @@
                     echo '<p class="text-sm text-green-700">Database is bereikbaar en werkt correct</p>';
                     echo '</div>';
                     echo '</div>';
-                } catch (PDOException $e) {
+                } else {
                     echo '<div class="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3">';
                     echo '<div class="w-3 h-3 bg-red-500 rounded-full"></div>';
                     echo '<div>';
                     echo '<p class="font-semibold text-red-900">MySQL verbinding mislukt</p>';
-                    echo '<p class="text-sm text-red-700">' . htmlspecialchars($e->getMessage()) . '</p>';
+                    echo '<p class="text-sm text-red-700">' . htmlspecialchars($mysqlError) . '</p>';
+                    echo '<p class="text-sm text-red-700 mt-2"><strong>Oplossing:</strong> Controleer of de MySQL container draait met <code class="bg-red-100 px-2 py-1 rounded">docker ps</code></p>';
                     echo '</div>';
                     echo '</div>';
                 }

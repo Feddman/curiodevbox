@@ -120,7 +120,7 @@
             <section class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-sm p-8 border border-blue-200">
                 <h2 class="text-3xl font-bold text-slate-900 mb-4">MySQL in Curio DevBox</h2>
                 <p class="text-slate-700 mb-4">
-                    Curio DevBox heeft <strong>MySQL 8.0</strong> geïnstalleerd. Je hebt direct toegang tot een werkende 
+                    Curio DevBox heeft <strong>MySQL 8.4</strong> geïnstalleerd. Je hebt direct toegang tot een werkende 
                     database waar je mee kunt experimenteren.
                 </p>
                 <p class="text-slate-700">

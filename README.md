@@ -5,7 +5,7 @@ Een Docker-gebaseerde ontwikkelomgeving vergelijkbaar met Devilbox, met alle too
 ## 🚀 Functies
 
 - **PHP 8.4** met Apache en PHP-FPM
-- **MySQL 8.0** databaseserver
+- **MySQL 8.4** databaseserver
 - **Nginx** webserver
 - **Apache** webserver
 - **Node.js 20** runtime
@@ -144,7 +144,7 @@ Xdebug is vooraf geconfigureerd en ingeschakeld. Om het te gebruiken:
 | Apache | devbox-php-apache | 8080 | PHP 8.4 met Apache |
 | Nginx | devbox-nginx | 80 | Nginx webserver |
 | PHP-FPM | devbox-php-fpm | 9000 | PHP-FPM voor Nginx |
-| MySQL | devbox-mysql | 3306 | MySQL 8.0 database |
+| MySQL | devbox-mysql | 3306 | MySQL 8.4 database |
 | phpMyAdmin | devbox-phpmyadmin | 8081 | Databasebeheer |
 | Adminer | devbox-adminer | 8082 | Alternatief DB tool |
 | Node.js | devbox-nodejs | 3000, 3001 | Node.js runtime |
