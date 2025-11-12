@@ -129,100 +129,11 @@
                       <section class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl shadow-sm p-8 border border-purple-200 text-center">
                 <h2 class="text-3xl font-bold text-slate-900 mb-4">Test je kennis!</h2>
                 <p class="text-slate-700 mb-6 text-lg">
-                    Denk je dat je alles begrijpt? Doe de test en beantwoord 20 vragen over Curio DevBox en de ontwikkelomgeving. 
+                    Denk je dat je alles begrijpt? Doe de test en beantwoord 25 vragen over Docker, Curio DevBox en de ontwikkelomgeving. 
                 </p>
                 <a href="learn/quiz.php" class="inline-block px-8 py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold text-lg shadow-lg hover:shadow-xl">
                     Doe de Test
                 </a>
-            </section>
-
-                    <!-- Wat is Docker -->
-                    <section class="bg-white rounded-xl shadow-sm p-8 border border-slate-200">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Wat is Docker?</h2>
-                <div class="prose prose-slate max-w-none">
-                    <p class="text-slate-700 leading-relaxed mb-4">
-                        Stel je voor: je werkt aan een website op je eigen computer. Alles werkt perfect! 
-                        Maar dan wil je je project delen met een klasgenoot, en bij hem werkt het niet. 
-                        Of je leraar zegt dat je project op de schoolserver moet draaien, maar daar werkt het ook niet.
-                    </p>
-                    <p class="text-slate-700 leading-relaxed mb-4">
-                        <strong>Docker lost dit probleem op!</strong> Docker is een technologie die ervoor zorgt 
-                        dat je applicatie altijd op dezelfde manier werkt, ongeacht op welke computer je het draait.
-                    </p>
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
-                        <p class="text-blue-900 font-semibold mb-2">Eenvoudige vergelijking:</p>
-                        <p class="text-blue-800">
-                            Denk aan Docker als een <strong>verhuisdoos</strong>. Je stopt alles wat je nodig hebt 
-                            (je code, de database, de webserver) in één doos. Deze doos werkt overal hetzelfde, 
-                            of je hem nu op je laptop, op school, of op een server zet.
-                        </p>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-900 mt-6 mb-3">Waarom is dit handig?</h3>
-                    <ul class="list-disc list-inside text-slate-700 space-y-2 ml-4">
-                        <li><strong>Geen installatieproblemen:</strong> Je hoeft niet handmatig PHP, MySQL en andere software te installeren</li>
-                        <li><strong>Altijd hetzelfde:</strong> Werkt op Windows, Mac en Linux op dezelfde manier</li>
-                        <li><strong>Makkelijk delen:</strong> Je kunt je hele omgeving met één commando starten</li>
-                        <li><strong>Geen conflicten:</strong> Verschillende projecten kunnen verschillende versies gebruiken zonder problemen</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Hoe werkt het -->
-            <section class="bg-white rounded-xl shadow-sm p-8 border border-slate-200">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Hoe werkt het in de praktijk?</h2>
-                <div class="space-y-4">
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                            1
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-900 mb-1">Je start Curio DevBox</h3>
-                            <p class="text-slate-700">
-                                Met één commando (<code class="bg-slate-100 px-2 py-1 rounded">docker-compose up -d</code>) 
-                                start je alle services. Dit duurt een paar minuten de eerste keer.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                            2
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-900 mb-1">Je plaatst je project</h3>
-                            <p class="text-slate-700">
-                                Je zet je PHP, HTML, CSS, JavaScript bestanden in de <code class="bg-slate-100 px-2 py-1 rounded">www/</code> 
-                                map. Je kunt meerdere projecten hebben, elk in een eigen map.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                            3
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-900 mb-1">Je opent je browser</h3>
-                            <p class="text-slate-700">
-                                Ga naar <code class="bg-slate-100 px-2 py-1 rounded">http://localhost</code> of 
-                                <code class="bg-slate-100 px-2 py-1 rounded">http://localhost:8080</code> en je ziet je startscherm!
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                            4
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-slate-900 mb-1">Je werkt aan je project</h3>
-                            <p class="text-slate-700">
-                                Elke keer dat je een bestand opslaat, zie je de wijzigingen direct in je browser. 
-                                Je gebruikt phpMyAdmin om je database te beheren, en alles werkt precies zoals op een echte server.
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <!-- Voordelen -->
