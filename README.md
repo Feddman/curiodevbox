@@ -342,4 +342,4 @@ Dit project is open source en beschikbaar voor persoonlijk en commercieel gebrui
 
 ---
 
-**Veel Codeerplezier! 🎉**
+**Veel Codeerplezier!**
