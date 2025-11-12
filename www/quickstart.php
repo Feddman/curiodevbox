@@ -44,7 +44,7 @@
                     <div class="flex-1">
                         <h2 class="text-2xl font-bold text-slate-900 mb-4">Start Curio DevBox</h2>
                         <p class="text-slate-700 mb-4">
-                            Open Docker Desktop op je computer en start Curio DevBox.
+                            Open Docker Desktop op je computer en start Curio DevBox als deze nog niet is gestart. Dit kun je zien aan het 'stop' ⏹️ en 'play' ▶️ icoontje.
                         </p>
                         <div class="space-y-3 mb-4">
                             <div class="flex items-start gap-3">
