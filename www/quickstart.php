@@ -58,7 +58,7 @@
                                 <div class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-700 rounded-full flex items-center justify-center font-bold text-sm mt-0.5">b</div>
                                 <div>
                                     <p class="text-slate-700 font-medium">Wacht tot Docker Desktop is opgestart</p>
-                                    <p class="text-slate-600 text-sm">Je ziet een Docker icoon in je taakbalk wanneer het klaar is</p>
+                                    <p class="text-slate-600 text-sm">Je ziet een Docker icoon ( <img src="img/docker-icon.png" alt="Docker Icon" class="inline-block w-8 h-8"> ) in je taakbalk wanneer het klaar is</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
