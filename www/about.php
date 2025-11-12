@@ -38,6 +38,17 @@
                 </p>
 
                 <div class="space-y-6">
+                    <div class="border-l-4 border-cyan-500 pl-6">
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                            <a href="learn/docker.php" class="text-cyan-600 hover:text-cyan-700 underline">Docker</a>
+                        </h3>
+                        <p class="text-slate-700">
+                            Docker is de basis van Curio DevBox. Het zorgt ervoor dat alle tools (PHP, MySQL, webservers, etc.) 
+                            in geïsoleerde containers draaien die overal hetzelfde werken. Geen installatieproblemen meer! 
+                            <a href="learn/docker.php" class="text-cyan-600 hover:text-cyan-700 underline">Meer leren over Docker →</a>
+                        </p>
+                    </div>
+
                     <div class="border-l-4 border-green-500 pl-6">
                         <h3 class="text-xl font-semibold text-slate-900 mb-2">
                             <a href="learn/php.php" class="text-green-600 hover:text-green-700 underline">PHP 8.4</a>
@@ -112,6 +123,17 @@
                         </p>
                     </div>
                 </div>
+            </section>
+
+                      <!-- Test je Kennis -->
+                      <section class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl shadow-sm p-8 border border-purple-200 text-center">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Test je kennis!</h2>
+                <p class="text-slate-700 mb-6 text-lg">
+                    Denk je dat je alles begrijpt? Doe de test en beantwoord 20 vragen over Curio DevBox en de ontwikkelomgeving. 
+                </p>
+                <a href="learn/quiz.php" class="inline-block px-8 py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold text-lg shadow-lg hover:shadow-xl">
+                    Doe de Test
+                </a>
             </section>
 
                     <!-- Wat is Docker -->
@@ -237,6 +259,8 @@
                     </div>
                 </div>
             </section>
+
+  
 
             <!-- CTA -->
             <div class="bg-slate-900 rounded-xl shadow-sm p-8 text-center">
