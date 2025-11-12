@@ -86,6 +86,10 @@ services:
       PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: root
       UPLOAD_LIMIT: 300M
+      PMA_USER: curiodevbox
+      PMA_PASSWORD: curiodevbox
+    volumes:
+      - ./docker/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
     depends_on:
       - mysql
     networks:
