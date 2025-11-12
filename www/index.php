@@ -265,6 +265,7 @@
                         echo '<div class="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">';
                         echo '<div class="w-3 h-3 bg-green-500 rounded-full"></div>';
                         echo '<div>';
+                        
                         echo '<p class="font-semibold text-green-900">Redis verbinding succesvol</p>';
                         echo '<p class="text-sm text-green-700">Cache systeem is actief</p>';
                         echo '</div>';

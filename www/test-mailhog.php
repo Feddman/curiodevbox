@@ -58,6 +58,7 @@
                     // Gebruik de eenvoudige helper functie
                     $result = sendMailHogEmail($to, $subject, $body);
                     
+                    
                     if ($result['success']) {
                         $message = "✅ E-mail succesvol verstuurd! Bekijk het in <a href='http://localhost:8025' target='_blank' class='underline font-semibold'>MailHog UI</a>.";
                         $messageType = 'success';
