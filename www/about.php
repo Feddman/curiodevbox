@@ -20,8 +20,15 @@
                 </svg>
                 Terug naar dashboard
             </a>
-            <h1 class="text-5xl font-bold text-slate-900 mb-4">Wat is Curio DevBox?</h1>
-            <p class="text-xl text-slate-600">Een complete uitleg voor beginnende developers</p>
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h1 class="text-5xl font-bold text-slate-900 mb-4">Wat is Curio DevBox?</h1>
+                    <p class="text-xl text-slate-600">Een complete uitleg voor beginnende developers</p>
+                </div>
+                <a href="quickstart.php" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold shadow-lg hover:shadow-xl whitespace-nowrap">
+                    Quick Start: Project Maken
+                </a>
+            </div>
         </header>
 
         <!-- Main Content -->

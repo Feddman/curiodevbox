@@ -19,9 +19,14 @@
                     <h1 class="text-5xl font-bold text-slate-900 mb-2">Curio DevBox</h1>
                     <p class="text-xl text-slate-600">Welkom op jouw Curio ontwikkelomgeving. Vanuit deze plek worden alle services gestart die nodig zijn om goed op je computer te kunnen ontwikkelen. Meer weten over hoe dat in elkaar zit? klik op de knop hiernaast!</p>
                 </div>
-                <a href="about.php" class="px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-medium">
-                    Wat is Curio DevBox?
-                </a>
+                <div class="flex flex-col gap-3">
+                    <a href="quickstart.php" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold shadow-lg hover:shadow-xl whitespace-nowrap text-center">
+                        Quick Start: Project Maken
+                    </a>
+                    <a href="about.php" class="px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-medium whitespace-nowrap text-center">
+                        Wat is Curio DevBox?
+                    </a>
+                </div>
             </div>
         </header>
 
@@ -104,7 +109,7 @@
         <?php
         $projectsDir = __DIR__;
         $userProjects = [];
-        $excludedItems = ['.', '..', 'node_modules', 'portfolio-site', 'game-website', 'learn'];
+        $excludedItems = ['.', '..', 'img', 'node_modules', 'portfolio-site', 'game-website', 'learn'];
         
         if (is_dir($projectsDir)) {
             $items = scandir($projectsDir);
@@ -125,7 +130,7 @@
         if (empty($userProjects)) {
             echo '<div class="bg-white rounded-lg shadow-sm p-8 border border-slate-200 text-center">';
             echo '<p class="text-slate-600 text-lg mb-2">Je hebt nog geen projecten aangemaakt.</p>';
-            echo '<p class="text-slate-500">Maak een nieuw project aan in je www folder om te starten!</p>';
+            echo '<p class="text-slate-500">Maak een nieuw project aan in je www folder om te starten!</p><p class="text-orange-300"> Geen idee hoe je dat moet doen? klik dan rechtsboven op de knop "Quick Start: Project Maken"';
             echo '</div>';
         } else {
             echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">';
