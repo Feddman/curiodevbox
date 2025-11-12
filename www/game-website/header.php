@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/game-website/css/style.css">
 </head>
 <body>
+   
     <header class="main-header">
         <div class="container">
             <h1><a href="/game-website/index.php">Games Database</a></h1>

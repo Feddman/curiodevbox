@@ -67,8 +67,12 @@
                     <p class="text-sm text-slate-500">Alternative DB Tool</p>
                 </a>
                 <a href="http://localhost:8025" target="_blank" class="bg-white rounded-lg shadow-sm p-6 border border-slate-200 hover:shadow-md hover:border-slate-300 transition-all group">
-                    <h3 class="font-semibold text-slate-900 mb-2 group-hover:text-blue-600">MailHog</h3>
-                    <p class="text-sm text-slate-500">Email Testing</p>
+                    <h3 class="font-semibold text-slate-900 mb-2 group-hover:text-blue-600">MailHog UI</h3>
+                    <p class="text-sm text-slate-500">Email Testing Interface</p>
+                </a>
+                <a href="test-mailhog.php" class="bg-white rounded-lg shadow-sm p-6 border border-slate-200 hover:shadow-md hover:border-slate-300 transition-all group">
+                    <h3 class="font-semibold text-slate-900 mb-2 group-hover:text-blue-600">MailHog Test</h3>
+                    <p class="text-sm text-slate-500">Test E-mails Versturen</p>
                 </a>
                 <div class="bg-white rounded-lg shadow-sm p-6 border border-slate-200">
                     <h3 class="font-semibold text-slate-900 mb-2">Node.js</h3>
