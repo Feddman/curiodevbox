@@ -104,7 +104,7 @@
         <?php
         $projectsDir = __DIR__;
         $userProjects = [];
-        $excludedItems = ['.', '..', 'node_modules', 'portfolio-site', 'game-website'];
+        $excludedItems = ['.', '..', 'node_modules', 'portfolio-site', 'game-website', 'learn'];
         
         if (is_dir($projectsDir)) {
             $items = scandir($projectsDir);
@@ -124,7 +124,8 @@
         
         if (empty($userProjects)) {
             echo '<div class="bg-white rounded-lg shadow-sm p-8 border border-slate-200 text-center">';
-            echo '<p class="text-slate-600 text-lg">Je hebt nog geen projecten aangemaakt</p>';
+            echo '<p class="text-slate-600 text-lg mb-2">Je hebt nog geen projecten aangemaakt.</p>';
+            echo '<p class="text-slate-500">Maak een nieuw project aan in je www folder om te starten!</p>';
             echo '</div>';
         } else {
             echo '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">';

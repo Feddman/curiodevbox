@@ -39,62 +39,76 @@
 
                 <div class="space-y-6">
                     <div class="border-l-4 border-green-500 pl-6">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-2">PHP 8.4</h3>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                            <a href="learn/php.php" class="text-green-600 hover:text-green-700 underline">PHP 8.4</a>
+                        </h3>
                         <p class="text-slate-700">
                             PHP is een programmeertaal die veel gebruikt wordt voor websites. Denk aan WordPress, 
                             Laravel, of gewoon je eigen PHP websites. Curio DevBox heeft de nieuwste versie (8.4) 
-                            al voor je klaar staan.
+                            al voor je klaar staan. <a href="learn/php.php" class="text-green-600 hover:text-green-700 underline">Meer leren over PHP →</a>
                         </p>
                     </div>
 
                     <div class="border-l-4 border-blue-500 pl-6">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-2">MySQL Database</h3>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                            <a href="learn/mysql.php" class="text-blue-600 hover:text-blue-700 underline">MySQL Database</a>
+                        </h3>
                         <p class="text-slate-700">
                             Een database is waar je gegevens opslaat. Bijvoorbeeld: gebruikersnamen, wachtwoorden, 
                             producten in een webshop, of berichten op een forum. MySQL is een van de meest gebruikte 
-                            databases ter wereld.
+                            databases ter wereld. <a href="learn/mysql.php" class="text-blue-600 hover:text-blue-700 underline">Meer leren over MySQL →</a>
                         </p>
                     </div>
 
                     <div class="border-l-4 border-purple-500 pl-6">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-2">Nginx & Apache Webservers</h3>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                            <a href="learn/webservers.php" class="text-purple-600 hover:text-purple-700 underline">Nginx & Apache Webservers</a>
+                        </h3>
                         <p class="text-slate-700">
                             Een webserver is het programma dat je website aan de wereld toont. Curio DevBox heeft 
                             <strong>beide</strong> de populairste webservers: Nginx (snel en modern) en Apache 
-                            (traditioneel en betrouwbaar). Je kunt kiezen welke je wilt gebruiken!
+                            (traditioneel en betrouwbaar). Je kunt kiezen welke je wilt gebruiken! <a href="learn/webservers.php" class="text-purple-600 hover:text-purple-700 underline">Meer leren over webservers →</a>
                         </p>
                     </div>
 
                     <div class="border-l-4 border-orange-500 pl-6">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-2">Node.js</h3>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                            <a href="learn/nodejs.php" class="text-orange-600 hover:text-orange-700 underline">Node.js</a>
+                        </h3>
                         <p class="text-slate-700">
                             Node.js laat je JavaScript gebruiken op de server. Handig voor moderne web applicaties, 
-                            real-time features (zoals chat), of het bouwen van API's.
+                            real-time features (zoals chat), of het bouwen van API's. <a href="learn/nodejs.php" class="text-orange-600 hover:text-orange-700 underline">Meer leren over Node.js →</a>
                         </p>
                     </div>
 
                     <div class="border-l-4 border-red-500 pl-6">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-2">phpMyAdmin</h3>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                            <a href="learn/phpmyadmin.php" class="text-red-600 hover:text-red-700 underline">phpMyAdmin</a>
+                        </h3>
                         <p class="text-slate-700">
                             Een handige webinterface om je database te beheren. In plaats van ingewikkelde commando's 
                             typen, klik je gewoon in een mooie interface om tabellen aan te maken, data te bekijken, 
-                            of queries uit te voeren.
+                            of queries uit te voeren. <a href="learn/phpmyadmin.php" class="text-red-600 hover:text-red-700 underline">Meer leren over phpMyAdmin →</a>
                         </p>
                     </div>
 
                     <div class="border-l-4 border-yellow-500 pl-6">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-2">Redis Cache</h3>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                            <a href="learn/redis.php" class="text-yellow-600 hover:text-yellow-700 underline">Redis Cache</a>
+                        </h3>
                         <p class="text-slate-700">
                             Redis is een snelle opslag voor tijdelijke gegevens. Bijvoorbeeld: sessies van gebruikers, 
-                            of veelgebruikte data die je snel wilt ophalen. Dit maakt je website sneller!
+                            of veelgebruikte data die je snel wilt ophalen. Dit maakt je website sneller! <a href="learn/redis.php" class="text-yellow-600 hover:text-yellow-700 underline">Meer leren over Redis →</a>
                         </p>
                     </div>
 
                     <div class="border-l-4 border-indigo-500 pl-6">
-                        <h3 class="text-xl font-semibold text-slate-900 mb-2">MailHog</h3>
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                            <a href="learn/mailhog.php" class="text-indigo-600 hover:text-indigo-700 underline">MailHog</a>
+                        </h3>
                         <p class="text-slate-700">
                             Tijdens het ontwikkelen wil je niet per ongeluk echte e-mails versturen. MailHog vangt alle 
-                            e-mails op zodat je kunt testen zonder echte e-mails te versturen.
+                            e-mails op zodat je kunt testen zonder echte e-mails te versturen. <a href="learn/mailhog.php" class="text-indigo-600 hover:text-indigo-700 underline">Meer leren over MailHog →</a>
                         </p>
                     </div>
                 </div>
@@ -169,7 +183,7 @@
                             <h3 class="font-semibold text-slate-900 mb-1">Je opent je browser</h3>
                             <p class="text-slate-700">
                                 Ga naar <code class="bg-slate-100 px-2 py-1 rounded">http://localhost</code> of 
-                                <code class="bg-slate-100 px-2 py-1 rounded">http://localhost:8080</code> en je ziet je website!
+                                <code class="bg-slate-100 px-2 py-1 rounded">http://localhost:8080</code> en je ziet je startscherm!
                             </p>
                         </div>
                     </div>
