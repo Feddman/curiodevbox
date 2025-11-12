@@ -77,24 +77,6 @@ Plaats je PHP bestanden in de `www/` directory. Ze zijn toegankelijk via:
 - Apache: http://localhost:8080
 - Nginx: http://localhost
 
-### Werken met Node.js
-
-1. Navigeer naar je project in `www/`:
-   ```bash
-   cd www/jouw-node-project
-   ```
-
-2. Toegang tot de Node.js container:
-   ```bash
-   docker exec -it devbox-nodejs sh
-   ```
-
-3. Installeer dependencies en start je app:
-   ```bash
-   npm install
-   npm start
-   ```
-
 ### Composer Gebruiken
 
 Composer is vooraf geïnstalleerd in PHP containers. Je kunt het gebruiken via:
