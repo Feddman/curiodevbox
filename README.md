@@ -20,6 +20,7 @@ Een Docker-gebaseerde ontwikkelomgeving vergelijkbaar met Devilbox, met alle too
 ## 📋 Vereisten
 
 - [Docker](https://www.docker.com/get-started) (versie 20.10 of hoger)
+- CPU virtualisatie ingeschakeld in BIOS/UEFI (voor Intel VT-x of AMD-V) - zie [docs/virtualization.md](docs/virtualization.md) voor instructies
 
 ## 🛠️ Installatie
 
