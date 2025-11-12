@@ -30,7 +30,7 @@
         <section class="bg-white rounded-xl shadow-sm p-8 border border-slate-200">
             <div id="quiz-container">
                 <div id="quiz-results" class="hidden mb-6 p-6 bg-green-50 border border-green-200 rounded-lg">
-                    <h3 class="text-2xl font-bold text-green-900 mb-2">Gefeliciteerd! 🎉</h3>
+                    <h3 class="text-2xl font-bold text-green-900 mb-2">Quiz voltooid! 🎉</h3>
                     <p class="text-green-800 text-lg">Je score: <span id="score">0</span> / 25</p>
                     <p class="text-green-700 mt-2" id="score-message"></p>
                 </div>
@@ -298,9 +298,6 @@
                     ?>
                     
                     <div class="flex gap-4 mt-8">
-                        <button type="submit" class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                            Controleer Antwoorden
-                        </button>
                         <button type="button" id="reset-quiz" class="px-8 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors font-semibold">
                             Opnieuw
                         </button>
@@ -330,75 +327,93 @@
         const scoreSpan = document.getElementById('score');
         const scoreMessage = document.getElementById('score-message');
 
-        // Form submit - controleer alle antwoorden
-        quizForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        let answeredQuestions = new Set();
+        const totalQuestions = <?php echo count($questions); ?>;
+
+        // Functie om score te berekenen en te tonen
+        function updateScore() {
             let score = 0;
-            const totalQuestions = <?php echo count($questions); ?>;
+            let answeredCount = 0;
             
-            // Controleer alle vragen en toon feedback
+            // Tel alle goede antwoorden
             document.querySelectorAll('.question-block').forEach(block => {
                 const selected = block.querySelector('.question-answer:checked');
-                const feedbackDiv = block.querySelector('.answer-feedback');
-                
-                // Verwijder oude feedback styling
-                block.querySelectorAll('label').forEach(label => {
-                    label.classList.remove('bg-green-100', 'border-green-500', 'bg-red-100', 'border-red-500');
-                });
-                
                 if (selected) {
-                    const isCorrect = selected.dataset.correct === 'true';
-                    
-                    if (isCorrect) {
+                    answeredCount++;
+                    if (selected.dataset.correct === 'true') {
                         score++;
-                        selected.closest('label').classList.add('bg-green-100', 'border-green-500');
-                        feedbackDiv.innerHTML = '<p class="text-green-700 font-semibold">✓ Goed gedaan!</p>';
-                        feedbackDiv.classList.remove('hidden');
-                        // Confetti voor elk goed antwoord
-                        triggerConfetti();
-                    } else {
-                        selected.closest('label').classList.add('bg-red-100', 'border-red-500');
-                        // Markeer het juiste antwoord
-                        const correctAnswer = block.querySelector('[data-correct="true"]').closest('label');
-                        correctAnswer.classList.add('bg-green-100', 'border-green-500');
-                        feedbackDiv.innerHTML = '<p class="text-red-700 font-semibold">✗ Helaas, dit is niet correct.</p>';
-                        feedbackDiv.classList.remove('hidden');
                     }
-                } else {
-                    // Geen antwoord geselecteerd
-                    const correctAnswer = block.querySelector('[data-correct="true"]').closest('label');
-                    correctAnswer.classList.add('bg-green-100', 'border-green-500');
-                    feedbackDiv.innerHTML = '<p class="text-slate-700 font-semibold">Geen antwoord gegeven. Het juiste antwoord is gemarkeerd.</p>';
-                    feedbackDiv.classList.remove('hidden');
                 }
             });
             
-            // Toon resultaten
+            // Update score display
             scoreSpan.textContent = score;
-            const percentage = Math.round((score / totalQuestions) * 100);
             
-            if (percentage === 100) {
-                scoreMessage.textContent = 'Perfect! Je kent Curio DevBox door en door! 🏆';
-                // Extra confetti voor perfecte score
-                for (let i = 0; i < 3; i++) {
-                    setTimeout(() => triggerConfetti(), i * 300);
+            // Als alle vragen zijn beantwoord, toon resultaten
+            if (answeredCount === totalQuestions) {
+                const percentage = Math.round((score / totalQuestions) * 100);
+                
+                if (percentage === 100) {
+                    scoreMessage.textContent = 'Perfect! Je kent Curio DevBox door en door! 🏆';
+                    // Extra confetti voor perfecte score
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => triggerConfetti(), i * 200);
+                    }
+                } else if (percentage >= 80) {
+                    scoreMessage.textContent = 'Geweldig! Je hebt een goed begrip van de ontwikkelomgeving! 👏';
+                } else if (percentage >= 60) {
+                    scoreMessage.textContent = 'Goed gedaan! Je kent de basis, maar er is nog meer te leren! 📚';
+                } else {
+                    scoreMessage.textContent = 'Niet slecht! Lees de uitleg nog eens door en probeer het opnieuw! 💪';
                 }
-            } else if (percentage >= 80) {
-                scoreMessage.textContent = 'Geweldig! Je hebt een goed begrip van de ontwikkelomgeving! 👏';
-            } else if (percentage >= 60) {
-                scoreMessage.textContent = 'Goed gedaan! Je kent de basis, maar er is nog meer te leren! 📚';
-            } else {
-                scoreMessage.textContent = 'Niet slecht! Lees de uitleg nog eens door en probeer het opnieuw! 💪';
+                
+                resultsDiv.classList.remove('hidden');
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
-            
-            resultsDiv.classList.remove('hidden');
-            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Directe feedback bij het selecteren van een antwoord
+        document.querySelectorAll('.question-answer').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const questionBlock = this.closest('.question-block');
+                const questionIndex = questionBlock.dataset.question;
+                const feedbackDiv = questionBlock.querySelector('.answer-feedback');
+                const isCorrect = this.dataset.correct === 'true';
+                
+                // Verwijder oude feedback
+                questionBlock.querySelectorAll('label').forEach(label => {
+                    label.classList.remove('bg-green-100', 'border-green-500', 'bg-red-100', 'border-red-500');
+                });
+                
+                // Toon feedback
+                if (isCorrect) {
+                    this.closest('label').classList.add('bg-green-100', 'border-green-500');
+                    feedbackDiv.innerHTML = '<p class="text-green-700 font-semibold">✓ Goed gedaan!</p>';
+                    feedbackDiv.classList.remove('hidden');
+                    
+                    // Confetti alleen als dit de eerste keer is dat deze vraag goed wordt beantwoord
+                    if (!answeredQuestions.has(questionIndex)) {
+                        triggerConfetti();
+                        answeredQuestions.add(questionIndex);
+                    }
+                } else {
+                    this.closest('label').classList.add('bg-red-100', 'border-red-500');
+                    // Markeer het juiste antwoord
+                    const correctAnswer = questionBlock.querySelector('[data-correct="true"]').closest('label');
+                    correctAnswer.classList.add('bg-green-100', 'border-green-500');
+                    feedbackDiv.innerHTML = '<p class="text-red-700 font-semibold">✗ Helaas, dit is niet correct.</p>';
+                    feedbackDiv.classList.remove('hidden');
+                }
+                
+                // Update score
+                updateScore();
+            });
         });
 
         // Reset quiz
         resetBtn.addEventListener('click', function() {
             quizForm.reset();
+            answeredQuestions.clear();
             resultsDiv.classList.add('hidden');
             
             document.querySelectorAll('.question-block').forEach(block => {
