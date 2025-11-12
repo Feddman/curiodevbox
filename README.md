@@ -20,6 +20,7 @@ Een Docker-gebaseerde ontwikkelomgeving vergelijkbaar met Devilbox, met alle too
 ## 📋 Vereisten
 
 - [Docker](https://www.docker.com/get-started) (versie 20.10 of hoger)
+- CPU virtualisatie ingeschakeld in BIOS/UEFI (voor Intel VT-x of AMD-V) - zie [docs/virtualization.md](docs/virtualization.md) voor instructies
 
 ## 🛠️ Installatie
 
@@ -217,30 +218,30 @@ Curio DevBox ondersteunt meerdere projecten in subdirectories. Je kunt zoveel pr
    - **Via Nginx:** http://localhost/mijn-project
 
 **Voorbeeld:**
-- `www/project1/` → http://localhost:8080/project1 (Apache) of http://localhost/project1 (Nginx)
-- `www/project2/` → http://localhost:8080/project2 (Apache) of http://localhost/project2 (Nginx)
-- `www/laravel-app/` → http://localhost:8080/laravel-app (Apache) of http://localhost/laravel-app (Nginx)
+**Voorbeeld:**
+- `www/portfolio-site/` → http://localhost:8080/portfolio-site (Apache) of http://localhost/portfolio-site (Nginx)
+- `www/game-website/` → http://localhost:8080/game-website (Apache) of http://localhost/game-website (Nginx)
 
 ### Methode 2: Virtual Hosts met Eigen Domeinen (Geavanceerd)
 
-Voor aparte domeinen zoals `project1.localhost` en `project2.localhost`:
+Voor aparte domeinen zoals `portfolio-site.localhost` en `game-website.localhost`:
 
 #### Voor Nginx:
 
 1. **Kopieer de template:**
    ```bash
-   cp docker/nginx/project-template.conf docker/nginx/project1.conf
+   cp docker/nginx/project-template.conf docker/nginx/portfolio-site.conf
    ```
 
 2. **Bewerk het bestand** en pas aan:
-   - `server_name project1.localhost;` → je gewenste domein
-   - `root /var/www/html/project1;` → je project pad
+   - `server_name portfolio-site.localhost;` → je gewenste domein
+   - `root /var/www/html/portfolio-site;` → je project pad
 
 3. **Voeg toe aan docker-compose.yml** (nginx volumes):
-   ```yaml
-   volumes:
-     - ./docker/nginx/project1.conf:/etc/nginx/conf.d/project1.conf
-   ```
+    ```yaml
+    volumes:
+       - ./docker/nginx/portfolio-site.conf:/etc/nginx/conf.d/portfolio-site.conf
+    ```
 
 4. **Voeg toe aan je hosts bestand:**
    - **Windows:** `C:\Windows\System32\drivers\etc\hosts`
@@ -248,7 +249,7 @@ Voor aparte domeinen zoals `project1.localhost` en `project2.localhost`:
    
    Voeg toe:
    ```
-   127.0.0.1 project1.localhost
+   127.0.0.1 portfolio-site.localhost
    ```
 
 5. **Herstart nginx:**
@@ -260,22 +261,22 @@ Voor aparte domeinen zoals `project1.localhost` en `project2.localhost`:
 
 1. **Kopieer de template:**
    ```bash
-   cp docker/apache/project-template.conf docker/apache/project1.conf
+   cp docker/apache/project-template.conf docker/apache/portfolio-site.conf
    ```
 
 2. **Bewerk het bestand** en pas aan:
-   - `ServerName project1.localhost;` → je gewenste domein
-   - `DocumentRoot /var/www/html/project1;` → je project pad
+   - `ServerName portfolio-site.localhost;` → je gewenste domein
+   - `DocumentRoot /var/www/html/portfolio-site;` → je project pad
 
 3. **Voeg toe aan docker-compose.yml** (php-apache volumes):
-   ```yaml
-   volumes:
-     - ./docker/apache/project1.conf:/etc/apache2/sites-available/project1.conf
-   ```
+      ```yaml
+      volumes:
+         - ./docker/apache/portfolio-site.conf:/etc/apache2/sites-available/portfolio-site.conf
+      ```
 
 4. **Activeer de site:**
    ```bash
-   docker exec -it devbox-php-apache a2ensite project1
+   docker exec -it devbox-php-apache a2ensite portfolio-site
    docker-compose restart php-apache
    ```
 
@@ -284,8 +285,8 @@ Voor aparte domeinen zoals `project1.localhost` en `project2.localhost`:
 ### Voorbeeld Projecten
 
 Er zijn al twee voorbeeld projecten aangemaakt:
-- **Project 1:** http://localhost:8080/project1 of http://localhost/project1
-- **Project 2:** http://localhost:8080/project2 of http://localhost/project2
+- **Portfolio site:** http://localhost:8080/portfolio-site of http://localhost/portfolio-site
+- **Game website:** http://localhost:8080/game-website of http://localhost/game-website
 
 ## 🤝 Tips
 
