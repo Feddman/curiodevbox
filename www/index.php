@@ -62,10 +62,6 @@
                     <h3 class="font-semibold text-slate-900 mb-2 group-hover:text-blue-600">phpMyAdmin</h3>
                     <p class="text-sm text-slate-500">Database Management</p>
                 </a>
-                <a href="http://localhost:8082" target="_blank" class="bg-white rounded-lg shadow-sm p-6 border border-slate-200 hover:shadow-md hover:border-slate-300 transition-all group">
-                    <h3 class="font-semibold text-slate-900 mb-2 group-hover:text-blue-600">Adminer</h3>
-                    <p class="text-sm text-slate-500">Alternative DB Tool</p>
-                </a>
                 <a href="http://localhost:8025" target="_blank" class="bg-white rounded-lg shadow-sm p-6 border border-slate-200 hover:shadow-md hover:border-slate-300 transition-all group">
                     <h3 class="font-semibold text-slate-900 mb-2 group-hover:text-blue-600">MailHog UI</h3>
                     <p class="text-sm text-slate-500">Email Testing Interface</p>
@@ -113,7 +109,7 @@
         <?php
         $projectsDir = __DIR__;
         $userProjects = [];
-        $excludedItems = ['.', '..', 'img', 'node_modules', 'portfolio-site', 'game-website', 'learn'];
+        $excludedItems = ['.', '..', 'img', 'includes', 'node_modules', 'portfolio-site', 'game-website', 'learn'];
         
         if (is_dir($projectsDir)) {
             $items = scandir($projectsDir);

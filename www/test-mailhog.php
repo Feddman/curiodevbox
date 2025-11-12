@@ -44,59 +44,10 @@
             </section>
 
             <?php
+            require_once __DIR__ . '/includes/mailhog-helper.php';
+            
             $message = '';
             $messageType = '';
-
-            // Simple SMTP function to send email via MailHog
-            function sendMailViaMailHog($to, $subject, $body, $from = 'test@curiodevbox.local') {
-                $smtpHost = 'mailhog';
-                $smtpPort = 1025;
-                
-                // Create socket connection
-                $socket = @fsockopen($smtpHost, $smtpPort, $errno, $errstr, 10);
-                
-                if (!$socket) {
-                    return false;
-                }
-                
-                // Read initial response
-                fgets($socket, 515);
-                
-                // Send EHLO
-                fputs($socket, "EHLO localhost\r\n");
-                fgets($socket, 515);
-                
-                // Send MAIL FROM
-                fputs($socket, "MAIL FROM: <{$from}>\r\n");
-                fgets($socket, 515);
-                
-                // Send RCPT TO
-                fputs($socket, "RCPT TO: <{$to}>\r\n");
-                fgets($socket, 515);
-                
-                // Send DATA
-                fputs($socket, "DATA\r\n");
-                fgets($socket, 515);
-                
-                // Send email headers and body
-                $emailData = "From: {$from}\r\n";
-                $emailData .= "To: {$to}\r\n";
-                $emailData .= "Subject: {$subject}\r\n";
-                $emailData .= "Content-Type: text/html; charset=UTF-8\r\n";
-                $emailData .= "\r\n";
-                $emailData .= $body . "\r\n";
-                $emailData .= ".\r\n";
-                
-                fputs($socket, $emailData);
-                fgets($socket, 515);
-                
-                // Send QUIT
-                fputs($socket, "QUIT\r\n");
-                fgets($socket, 515);
-                
-                fclose($socket);
-                return true;
-            }
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $to = $_POST['to'] ?? '';
@@ -104,11 +55,15 @@
                 $body = $_POST['body'] ?? '';
 
                 if (!empty($to) && !empty($body)) {
-                    if (sendMailViaMailHog($to, $subject, $body)) {
+                    // Gebruik de eenvoudige helper functie
+                    $result = sendMailHogEmail($to, $subject, $body);
+                    
+                    if ($result['success']) {
                         $message = "✅ E-mail succesvol verstuurd! Bekijk het in <a href='http://localhost:8025' target='_blank' class='underline font-semibold'>MailHog UI</a>.";
                         $messageType = 'success';
                     } else {
-                        $message = "❌ Er is een fout opgetreden bij het versturen van de e-mail. Controleer of MailHog draait.";
+                        $errorMsg = $result['error'] ?? 'Onbekende fout';
+                        $message = "❌ Er is een fout opgetreden: " . htmlspecialchars($errorMsg);
                         $messageType = 'error';
                     }
                 } else {
@@ -188,28 +143,38 @@
                 <h2 class="text-2xl font-bold text-slate-900 mb-4">Hoe gebruik je MailHog in je Code?</h2>
                 
                 <div class="space-y-6">
-                    <!-- PHP mail() Example -->
+                    <!-- Eenvoudige Helper Functie -->
                     <div>
-                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Methode 1: PHP mail() functie</h3>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Methode 1: Eenvoudige Helper Functie (Aanbevolen)</h3>
                         <p class="text-slate-700 text-sm mb-3">
-                            De eenvoudigste manier. Configureer PHP om MailHog te gebruiken:
+                            De eenvoudigste manier! Gebruik de helper functie - geen complexe code nodig:
                         </p>
                         <div class="bg-slate-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                             <div><span class="text-blue-400">&lt;?php</span></div>
-                            <div class="mt-2"><span class="text-purple-400">ini_set</span>(<span class="text-yellow-300">'SMTP'</span>, <span class="text-yellow-300">'mailhog'</span>);</div>
-                            <div><span class="text-purple-400">ini_set</span>(<span class="text-yellow-300">'smtp_port'</span>, <span class="text-yellow-300">'1025'</span>);</div>
-                            <div class="mt-2"><span class="text-purple-400">mail</span>(</div>
-                            <div class="ml-4"><span class="text-yellow-300">'test@example.com'</span>, <span class="text-yellow-300">'Onderwerp'</span>, <span class="text-yellow-300">'Bericht'</span></div>
+                            <div class="mt-2"><span class="text-purple-400">require_once</span> <span class="text-yellow-300">'includes/mailhog-helper.php'</span>;</div>
+                            <div class="mt-2"><span class="text-gray-500">// Stuur een e-mail - zo simpel!</span></div>
+                            <div class="mt-2"><span class="text-purple-400">$result</span> = <span class="text-blue-400">sendMailHogEmail</span>(</div>
+                            <div class="ml-4"><span class="text-yellow-300">'test@example.com'</span>, <span class="text-gray-500">// Aan</span></div>
+                            <div class="ml-4"><span class="text-yellow-300">'Onderwerp van de e-mail'</span>, <span class="text-gray-500">// Onderwerp</span></div>
+                            <div class="ml-4"><span class="text-yellow-300">'Dit is het bericht'</span> <span class="text-gray-500">// Bericht</span></div>
                             <div>);</div>
+                            <div class="mt-2"><span class="text-purple-400">if</span> (<span class="text-purple-400">$result</span>[<span class="text-yellow-300">'success'</span>]) {</div>
+                            <div class="ml-4"><span class="text-blue-400">echo</span> <span class="text-yellow-300">'E-mail verstuurd!'</span>;</div>
+                            <div>}</div>
                             <div><span class="text-blue-400">?&gt;</span></div>
+                        </div>
+                        <div class="bg-green-50 border-l-4 border-green-500 p-3 rounded-lg mt-3">
+                            <p class="text-green-800 text-sm">
+                                <strong>✓ Voordeel:</strong> Geen complexe socket code nodig! Gewoon één simpele functie aanroepen.
+                            </p>
                         </div>
                     </div>
 
                     <!-- PHPMailer Example -->
                     <div>
-                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Methode 2: PHPMailer (Aanbevolen)</h3>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Methode 2: PHPMailer (Voor Geavanceerd Gebruik)</h3>
                         <p class="text-slate-700 text-sm mb-3">
-                            Voor meer controle en betere e-mail functionaliteit:
+                            Als je meer controle nodig hebt, kun je PHPMailer gebruiken (vereist Composer):
                         </p>
                         <div class="bg-slate-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                             <div><span class="text-blue-400">&lt;?php</span></div>

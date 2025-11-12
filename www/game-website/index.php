@@ -2,7 +2,13 @@
 $pageTitle = 'Home';
 require_once 'header.php';
 ?>
-
+<?php
+ini_set('SMTP', 'mailhog');
+ini_set('smtp_port', '1025');
+mail(
+'test@example.com', 'Onderwerp', 'Bericht'
+);
+?>
     <div class="welcome-section">
         <h2>Welkom bij de Games Database</h2>
         <p>Dit is een CRUD voorbeeld applicatie voor het beheren van games.</p>
