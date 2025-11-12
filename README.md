@@ -20,9 +20,10 @@ Een Docker-gebaseerde ontwikkelomgeving vergelijkbaar met Devilbox, met alle too
 ## 📋 Vereisten
 
 - [Docker](https://www.docker.com/get-started) (versie 20.10 of hoger)
-- [Docker Compose](https://docs.docker.com/compose/install/) (versie 2.0 of hoger)
 
 ## 🛠️ Installatie
+
+> **Let op:** Voor je begint met installatie, zorg dat je eerst Docker hebt geïnstalleerd. Zie [Vereisten](#-vereisten) hierboven.
 
 1. **Clone of download deze repository**
 
